@@ -1,0 +1,82 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Hexagon {
+private:
+    double side_length;
+
+public:
+    Hexagon(double length) : side_length(length) {}
+
+    double calculate_area() {
+        return 1.5 * 1.732 * side_length;
+    }
+
+    double calculate_perimeter() {
+        return 6 * side_length;
+    }
+
+    double calculate_sum_of_angles() {
+        return 6 * 120;
+    }
+
+    void display_info() {
+        cout << "Hexagon with side length " << side_length << ":\n";
+        cout << "Area: " << calculate_area() << "\n";
+        cout << "Perimeter: " << calculate_perimeter() << "\n";
+        cout << "Sum of angles: " << calculate_sum_of_angles() << " degrees\n\n";
+    }
+};
+
+class Square {
+private:
+    double side_length;
+
+public:
+    Square(double length) : side_length(length) {}
+
+    double calculate_area() {
+        return pow(side_length, 2);
+    }
+
+    double calculate_perimeter() {
+        return 4 * side_length;
+    }
+
+    void display_info() {
+        cout << "Square with side length " << side_length << ":\n";
+        cout << "Area: " << calculate_area() << "\n";
+        cout << "Perimeter: " << calculate_perimeter() << "\n\n";
+    }
+};
+
+int main() {
+    // Use the last digit of your CNIC as the side length
+    int cnic_last_digit;
+    cout << "Enter the last digit of your CNIC: ";
+    cin >> cnic_last_digit;
+
+    Hexagon hexagon(cnic_last_digit);
+    Square square(cnic_last_digit + 1);
+
+    while (true) {
+        cout << "Menu:\n";
+        cout << "1. Hexagon\n";
+        cout << "2. Square\n";
+        cout << "Any other input to exit\n";
+
+        char choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == '1') {
+            hexagon.display_info();
+        } else if (choice == '2') {
+            square.display_info();
+        } else {
+            cout << "Exiting the program.\n";
+            break;
+        }
+    }
+    return 0;
